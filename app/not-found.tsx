@@ -1,7 +1,7 @@
 import css from "./page.module.css";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Notes found",
+  title: "Not found",
   description: "There is no response, page is not found",
   openGraph: {
     title: "Not found",
