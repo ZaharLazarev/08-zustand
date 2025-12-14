@@ -19,6 +19,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Notes search",
   description: "Create, structure and search for your notes",
+  openGraph: {
+    title: "Notes search",
+    description: "Create, structure and search for your notes",
+    url: `https://08-zustand-sigma-ashen.vercel.app/`,
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NoteHub",
+      },
+    ],
+  },
 };
 
 interface RootLayoutProps {
@@ -26,25 +39,6 @@ interface RootLayoutProps {
   modal: React.ReactNode;
 }
 
-export async function generateMetaData() {
-  return {
-    title: "Notes search",
-    description: "Create, structure and search for your notes",
-    openGraph: {
-      title: "Notes search",
-      description: "Create, structure and search for your notes",
-      url: `https://08-zustand-sigma-ashen.vercel.app/`,
-      images: [
-        {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-          width: 1200,
-          height: 630,
-          alt: "NoteHub",
-        },
-      ],
-    },
-  };
-}
 export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="en">

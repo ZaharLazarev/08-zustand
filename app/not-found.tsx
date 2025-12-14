@@ -3,28 +3,21 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Notes search",
   description: "Create, structure and search for your notes",
-};
-
-export async function generateMetaData() {
-  return {
+  openGraph: {
     title: "Not found",
     description: "There is no response, page is not found",
     url: `https://08-zustand-sigma-ashen.vercel.app`,
-    openGraph: {
-      title: "Not found",
-      description: "There is no response, page is not found",
-      url: `https://08-zustand-sigma-ashen.vercel.app`,
-      images: [
-        {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-          width: 1200,
-          height: 630,
-          alt: "NoteHub",
-        },
-      ],
-    },
-  };
-}
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NoteHub",
+      },
+    ],
+  },
+};
+
 export default function NotFound() {
   return (
     <div>
