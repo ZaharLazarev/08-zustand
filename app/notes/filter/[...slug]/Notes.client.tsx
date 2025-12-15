@@ -8,9 +8,8 @@ import { useState } from "react";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
 import { useDebouncedCallback } from "use-debounce";
-import Modal from "@/components/Modal/Modal";
-import NoteForm from "@/components/NoteForm/NoteForm";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 interface NotesClientProps {
   paramTag?: string;
@@ -19,7 +18,7 @@ interface NotesClientProps {
 export default function NotesClient({ paramTag }: NotesClientProps) {
   const [page, setPage] = useState(1);
   const [query, setNewQuery] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen] = useState(false);
   const { data, isLoading } = useQuery({
     queryKey: ["notes", page, query, paramTag],
     queryFn: () =>
@@ -40,12 +39,6 @@ export default function NotesClient({ paramTag }: NotesClientProps) {
     600
   );
 
-  const onClose = () => {
-    setIsModalOpen(false);
-  };
-  const onSuccess = () => {
-    setIsModalOpen(false);
-  };
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
@@ -53,22 +46,12 @@ export default function NotesClient({ paramTag }: NotesClientProps) {
         {totalPages > 1 && (
           <Pagination setPage={setPage} page={page} totalPages={totalPages} />
         )}
-        <button
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
-          className={css.button}
-        >
+        <Link href={"/notes/action/create"} className={css.button}>
           Create note +
-        </button>
+        </Link>
       </header>
       {data && !isLoading && <NoteList notes={data.notes} />}
       {isLoading && <TailSpin />}
-      {isModalOpen && (
-        <Modal onClose={onClose}>
-          <NoteForm onClose={onClose} onSuccess={onSuccess} />
-        </Modal>
-      )}
     </div>
   );
 }
