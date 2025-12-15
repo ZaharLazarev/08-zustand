@@ -49,7 +49,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${robotoFont}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${robotoFont.variable}`}
       >
         <TanstackProvider>
           <Header />
